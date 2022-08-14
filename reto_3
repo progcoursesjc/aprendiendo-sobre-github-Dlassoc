@@ -1,0 +1,57 @@
+Profe no supe como hacer los otros :(
+#reto_3
+class Parciales:
+    def __init__(self, nombre_curso, porcentaje, lista_preguntas):
+        self.nombre_curso = nombre_curso
+        self.porcentaje = porcentaje
+        self.lista_preguntas = lista_preguntas
+
+lista_parciales = [] #en lista_parciales se guardara el resultado del usuario  
+lista_cursos = ["1. Calculo Diferencial", 
+                "2. Algebra Lineal", 
+                "3. POO", 
+                "4. Procesos y negocios de la información"
+                ]
+def parcial():
+    n_curso = k #Asigna curso en la lista para luego ser enviado a la clase
+    porcentaje_parcial = int(input("Ingrese el porcentaje que tendra el parcial: "))
+    n_preguntas = int(input("Ingrese el número de preguntas que tendrá el parcial: "))
+    print("Ingrese las preguntas del parcial, una por una: ")
+    l_preguntas = []
+    for n in range(n_preguntas):
+        preguntas = str(input())
+        l_preguntas.append(preguntas)
+        
+    parcial = Parciales(n_curso, porcentaje_parcial, l_preguntas)
+    lista_parciales.append(parcial)
+    
+    print("Parcial guardado con exito!")
+    Mostrar()
+
+def Mostrar():
+   cont=0
+   while cont<len(lista_parciales):
+        print(lista_parciales[cont].nombre_curso," - Porcentaje:",lista_parciales[cont].porcentaje,"%")
+        for r in lista_parciales[cont].lista_preguntas:
+            print("Pregunta:",r)
+        cont+=1
+
+#Lo que el usuario ve (main)
+print("Lista de cursos para crear el parcial: ")
+print("")
+for i in lista_cursos:
+    print(i)
+print("")
+curso = int(input("Seleccione un curso: ")) #Aca lo que el usuario hace es escoger a cual de los cursos acceder
+if curso == 1:
+    k = lista_cursos[0]
+    parcial()
+elif curso == 2:
+    k = lista_cursos[1]
+    parcial()
+elif curso == 3:
+    k = lista_cursos[2]
+    parcial()
+elif curso == 4:
+    k = lista_cursos[3]
+    parcial()
