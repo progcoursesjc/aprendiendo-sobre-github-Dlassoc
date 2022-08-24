@@ -1,0 +1,43 @@
+import datetime
+from itertools import product
+class Order:
+    id = 0
+    def __init__(self, date: datetime, total : float, status: bool):
+        self.id += 1
+        self.product_list = []
+        self.date = date
+        self.total = total
+        self.status = status
+
+class Product: 
+    def __init__(self,id:int, name: str, price : float ):
+        self.id = id
+        self.name = name 
+        self.price = price
+        self.price_history = { datetime.date.today(): price}
+
+    def update_price(self, new_price):   
+        new_price = int(input ("nuevo precio"))
+        print(f"El nuevo precio del producto es {new_price}")
+
+class User:
+    def __init__ (self, id: int, user_name : str, balance: float):
+        self.id = id
+        self.user_name = user_name
+        self.balance = balance
+
+    def add_product_to_car(self, prod = Product):
+        self.product_list = list[Product] = []
+        product1= input("Ingrese el articulo que desea llevar")
+        self.product_list.append(product1)
+        
+
+print ("==========TIENDAS DANIEL :) ============")
+Pony_Malta=Product(2101, "Pony Malta", 1.75)
+print (Pony_Malta.id, Pony_Malta.name, Pony_Malta.price_history)
+Jugo_de_mango= Product(2102, "Jugo de mango", 1.95)
+print(Jugo_de_mango.id, Jugo_de_mango.name, Jugo_de_mango.price_history)    
+Usuario1=User(1011510206, "Daniel Camilo Lasso", 258)
+a = User.add_product_to_car(Jugo_de_mango)
+
+print(f"El sr(a) {Usuario1.user_name},identificado con la CC {Usuario1.id} llevará {a}")
