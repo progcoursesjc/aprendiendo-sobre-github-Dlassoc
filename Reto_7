@@ -1,0 +1,46 @@
+class Person: 
+  def __init__(self, name: str, age: int, size: float, color: str):
+    self.name = name
+    self.age= age 
+    self.size= size
+    self.color = color
+
+  def walk(self, distance: int):
+    return f"Hi my name is {self.name}, i´m walking {distance} km"
+
+  def eat(self, food: str):
+    return f"Hi, my name is {self.name} and i'm  eating {food}"
+  
+  def speak(self, language: str):
+    return f"Hi, my name is {self.name} and i speak {language}"
+
+
+class Student(Person): 
+    def Study(self, subject: str):
+      return f"Hi, my name is {self.name} and i'm studying {subject}"
+
+class Teacher(Person): 
+    def Teach(self, subject: str): 
+      return f"Hi, my name is {self.name} and i'm gonna teach {subject}"
+
+
+s1= Student("Daniel Lasso",18, 1.77, "black")
+t1= Teacher("Jonathan Calle",45, 1.78, "black")
+print(s1.walk(6))
+print("")
+print(s1.eat(("bacon")))
+print("")
+print(s1.speak(("spanish and englis")))
+print("")
+print(s1.Study(("system engineer")))
+print("")
+print("NOW THE TEACHER")
+print("")
+
+print(t1.walk(10))
+print("")
+print(t1.eat(("milo with vainilla cake")))
+print("")
+print(t1.speak(("spanish and english")))
+print("")
+print(t1.Teach(("oop and data structures dinamic")))
