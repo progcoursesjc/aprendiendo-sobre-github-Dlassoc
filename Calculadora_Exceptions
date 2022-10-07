@@ -7,7 +7,7 @@ class Calculadora:
         c.operar(a)
 
     def operar (self, a):
-      if (a != "Terminar"):
+      if (a != "terminar"):
                 try:
                     self.resultado = eval(a)
                     print(f"El resultado es:{self.resultado:.2f}")
