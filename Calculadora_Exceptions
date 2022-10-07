@@ -1,0 +1,36 @@
+class Calculadora:
+    def __init__ (self):
+        self.resultado = 0
+    
+    def ingresar_datos(self):
+        a  = input("Ingrese numeros y operacion a realizar ")
+        c.operar(a)
+
+    def operar (self, a):
+        
+        while(a != "terminar"):
+            for i in a:
+                try:
+                    self.resultado = eval(a)
+                    print(f"El resultado es:{self.resultado:.2f}")
+                    self.ingresar_datos()                           
+                except ZeroDivisionError:
+                    print("No se puede divir por 0, ¿o es que eso le enseñaron?")
+                    self.ingresar_datos()    
+                except NameError:
+                    print("Ingresa valores que sean numericos...")
+                    self.ingresar_datos()    
+                except ValueError:
+                    print("No hermano como así, eso no es un int xD")
+                    self.ingresar_datos()    
+                except TypeError:
+                    print("No bobo, solo numeros...")
+                    self.ingresar_datos()    
+                except SyntaxError:
+                    print("No intentes ejecutar codigo, pillín...")
+                    self.ingresar_datos()    
+       
+c = Calculadora()
+c.ingresar_datos()
+
+    
