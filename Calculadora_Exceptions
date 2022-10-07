@@ -7,9 +7,7 @@ class Calculadora:
         c.operar(a)
 
     def operar (self, a):
-        
-        while(a != "terminar"):
-            for i in a:
+      if (a != "Terminar"):
                 try:
                     self.resultado = eval(a)
                     print(f"El resultado es:{self.resultado:.2f}")
@@ -18,18 +16,21 @@ class Calculadora:
                     print("No se puede divir por 0, ¿o es que eso le enseñaron?")
                     self.ingresar_datos()    
                 except NameError:
-                    print("Ingresa valores que sean numericos...")
-                    self.ingresar_datos()    
-                except ValueError:
-                    print("No hermano como así, eso no es un int xD")
+                    print("Ingresa valores que sean numeritercos...")
+                    """self.ingresar_datos()    """
                     self.ingresar_datos()    
                 except TypeError:
                     print("No bobo, solo numeros...")
                     self.ingresar_datos()    
                 except SyntaxError:
                     print("No intentes ejecutar codigo, pillín...")
-                    self.ingresar_datos()    
-       
+                    self.ingresar_datos() 
+                except ValueError:
+                    print("No ingreses eso :) ")
+                    self.ingresar_datos()   
+                else:
+                    print("temrminar se ejecutó correctamente")
+
 c = Calculadora()
 c.ingresar_datos()
 
