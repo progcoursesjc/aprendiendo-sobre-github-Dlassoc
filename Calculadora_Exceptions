@@ -1,37 +1,49 @@
+class Error (Exception):
+  def __init__(self, mensaje):
+    self.mensaje = mensaje
+
+try:
+  raise Error("Gravísimo")
+except:
+  print("Error genérico...")
+
 class Calculadora:
     def __init__ (self):
         self.resultado = 0
     
     def ingresar_datos(self):
-        a  = input("Ingrese numeros y operacion a realizar ")
-        c.operar(a)
+        operaciones = ["+", "-", "/", "*"]
+        a  = input("Ingrese numeros y operacion a realizar: ")
+        j = a.split()
+        print(j)
+        if a != "terminar":
+              if j == []:
+                raise Error ("Ingrese valores... ")
+              if (len(j) <= 2 or len(j) <= 1 or len (j) >3 ):
+                raise Error("Ingrese los valores y operacion por separado: 5 + 4")
+              elif j[1] not in operaciones:
+                print(j()[1])
+                raise Error ("Ingrese operador valido")
+              elif j[1] == "+":
+                suma = int(j[0]) + int(j[2])
+                print(suma)
+                self.ingresar_datos()
 
-    def operar (self, a):
-      if (a != "terminar"):
-                try:
-                    self.resultado = eval(a)
-                    print(f"El resultado es:{self.resultado:.2f}")
-                    self.ingresar_datos()                           
-                except ZeroDivisionError:
-                    print("No se puede divir por 0, ¿o es que eso le enseñaron?")
-                    self.ingresar_datos()    
-                except NameError:
-                    print("Ingresa valores que sean numeritercos...")
-                    """self.ingresar_datos()    """
-                    self.ingresar_datos()    
-                except TypeError:
-                    print("No bobo, solo numeros...")
-                    self.ingresar_datos()    
-                except SyntaxError:
-                    print("No intentes ejecutar codigo, pillín...")
-                    self.ingresar_datos() 
-                except ValueError:
-                    print("No ingreses eso :) ")
-                    self.ingresar_datos()   
-                else:
-                    print("temrminar se ejecutó correctamente")
+              elif j[1] == "-":
+                resta = int(j[0]) - int(j[2])
+                print(resta)
+                self.ingresar_datos()
+              elif j[1] == "*":
+                multiplicación = int(j[0]) * int(j[2])
+                print(multiplicación)
+                self.ingresar_datos()
+              elif j[1] == "/":
+                if j[2] == "0":
+                  raise Error ("Division por 0...")
+                dividir = int(j[0]) / int(j[2])
+                print(dividir)
+                self.ingresar_datos()
+        print("Programa ha finalizado con exito")
 
 c = Calculadora()
 c.ingresar_datos()
-
-    
