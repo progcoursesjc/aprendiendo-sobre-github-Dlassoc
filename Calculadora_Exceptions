@@ -1,21 +1,14 @@
 class Divx0(Exception):
   def __init__(self, mensaje):
     self.mensaje = mensaje
-  
-
-
 
 class Lista_sin_posicion(Exception):
   def __init__(self, mensaje):
     self.mensaje = mensaje
-  
-
 
 class Faltan_posiciones(Exception):
   def __init__(self, mensaje):
     self.mensaje = mensaje
-  
-
 
 class Operador_desconocido(Exception):
   def __init__(self, mensaje):
@@ -26,76 +19,76 @@ class Caracter_o_letra(Exception):
     self.mensaje = mensaje
 
 class Interrupcion_Forzada(KeyboardInterrupt):
-    def __init__(self):
-      pass
+  def __init__ (self):
+    pass
+    
 
-   
+
+
 class Calculadora:
     def __init__ (self):
         self.resultado = 0
     
     def ingresar_datos(self):
-        operaciones = ["+", "-", "/", "*"]
-        a  = input("Ingrese numeros y operacion a realizar: ")
-        j = a.split()
-        print(j)
-        if a != "terminar":
-          try:
-              if j == []:
-                raise Lista_sin_posicion ("La lista está vacia, ingrese valores...")
-              elif (len(j) == 2):
-                raise Faltan_posiciones("Debes de digitar el otro valor")
-              elif  (len(j) == 1):
-                raise Faltan_posiciones("Debes ingresar el operando y el otro valor a operar")
-              elif  (len (j) > 3):
-                raise Faltan_posiciones("No puedes ingresar más de 3 posiciones, la primera :numero, la segunda: operador, tercera: numero")
-              elif not j[0].isdigit() :
-                  raise Caracter_o_letra("Debes de ingresar un numero, no una letra")
-              elif j[1] not in operaciones:
-                  raise Operador_desconocido("Debes de ingresar un operado: +,-,*,/")   
-                   
-              elif not j[2].isdigit() :
-                  raise Caracter_o_letra("Debes de ingresar un numero, no una letra")  
+        try:
+            operaciones = ["+", "-", "/", "*"]
+            a  = input("Ingrese numeros y operacion a realizar: ")
+            j = a.split()
+            print(j)
+            if a != "terminar":
+                try:  
+                  print("aaa")
+                  if a != "terminar":
+                      if j == []:
+                          raise Lista_sin_posicion ("La lista está vacia, ingrese valores...")
+                      elif (len(j) == 2):
+                          raise Faltan_posiciones("Debes de digitar el otro valor")
+                      elif  (len(j) == 1):
+                          raise Faltan_posiciones("Debes ingresar el operando y el otro valor a operar")
+                      elif  (len (j) > 3):
+                          raise Faltan_posiciones("No puedes ingresar más de 3 posiciones, la primera :numero, la segunda: operador, tercera: numero")
+                      elif not j[0].isdigit() :
+                              raise Caracter_o_letra("Debes de ingresar un numero, no una letra")
+                      elif j[1] not in operaciones:
+                              raise Operador_desconocido("Debes de ingresar un operado: +,-,*,/")                     
+                      elif not j[2].isdigit() :
+                              raise Caracter_o_letra("Debes de ingresar un numero, no una letra")  
+                      elif j[1] == "+":             
+                          suma = int(j[0]) + int(j[2])
+                          print(suma)
+                          self.ingresar_datos()
+                      elif j[1] == "-":
+                          resta = int(j[0]) - int(j[2])
+                          print(resta)
+                          self.ingresar_datos()
+                      elif j[1] == "*":
+                          multiplicación = int(j[0]) * int(j[2])
+                          print(multiplicación)
+                          self.ingresar_datos()
+                      elif j[1] == "/":
+                          if j[2] == "0":
+                              raise Divx0 ("Division por 0...")
+                          dividir = int(j[0]) / int(j[2])
+                          print(dividir)
+                          self.ingresar_datos()
 
-              elif j[1] == "+":             
-                suma = int(j[0]) + int(j[2])
-                print(suma)
-                self.ingresar_datos()
-              elif j[1] == "-":
-                resta = int(j[0]) - int(j[2])
-                print(resta)
-                self.ingresar_datos()
-              elif j[1] == "*":
-                multiplicación = int(j[0]) * int(j[2])
-                print(multiplicación)
-                self.ingresar_datos()
-              elif j[1] == "/":
-                if j[2] == "0":
-                  raise Divx0 ("Division por 0...")
-                dividir = int(j[0]) / int(j[2])
-                print(dividir)
-                self.ingresar_datos()
-          except Interrupcion_Forzada:
-            print("Error! --> ") 
-            self.ingresar_datos()               
-          except Lista_sin_posicion as e:
-              print("Error! -->", e.mensaje)
-              self.ingresar_datos()
-          except Divx0 as e:
-              print("Error! -->", e.mensaje)
-              self.ingresar_datos()
-          except Operador_desconocido as e:
-            print("Error! -->", e.mensaje)
-            self.ingresar_datos()
-          except Faltan_posiciones as e:
-            print("Error! -->", e.mensaje)   
-            self.ingresar_datos()       
-          except Caracter_o_letra as e:
-            print("Error! -->", e.mensaje)   
-            self.ingresar_datos()
-      
+                except Divx0 as e:
+                        print("Error! -->", e.mensaje)
+                        self.ingresar_datos()
+                except Operador_desconocido as e:
+                    print("Error! -->", e.mensaje)
+                    self.ingresar_datos()
+                except Faltan_posiciones as e:
+                    print("Error! -->", e.mensaje)   
+                    self.ingresar_datos()       
+                except Caracter_o_letra as e:
+                    print("Error! -->", e.mensaje)   
+                    self.ingresar_datos()
+        except KeyboardInterrupt:
+          print("Interrupcion forzada por el usuario")
+          
 
-
+              
 
 c = Calculadora()
 c.ingresar_datos()
