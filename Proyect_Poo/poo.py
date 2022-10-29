@@ -60,9 +60,12 @@ def run(rec):
     elif "teléfono " in rec:
         talk(" el telefono fijo de la universidad de medellín es: 604 5904500, te recuerdo que el 604 es la extensión para llamar a telefonos fijos en medellín si eres de otra ciudad busca el numero de extensión y agregalo al numero")
         print("604 5904500")
+
     elif "horario de atención" in rec:
         talk("El horario de atención de la universidad de medellín es de lunes a viernes, 8 a. m. - 12 pm ,y 2 p. m. - 6 p. m")
 
+    elif "pago" in rec:
+        talk ("Hay muchas razones por las cuales tu pago puede estár retrasado, una de ellas es que hayas realizado el pago por una entidad bancaria fisica, en ese caso se podrá ver reflejado en 2 dias habiles, si lo hiciste virtual demorará unos 15m, si ya ha pasadi ese tiempo y no ha pasado nada, deberás comunicarte con la universidad de medellín porque no podré resolver tu duda")
     elif "calendario institucional" in rec:
         with sr.Microphone() as source:
             talk("Dime, ¿Eres estudiante nuevo o antiguo?")
@@ -117,40 +120,48 @@ def run(rec):
                     return flag
 
     elif "carreras" in rec:
-        talk("¿carreras de pre-grado o posgrado? ")
-        voice = listener.listen(source)
-        rec = listener.recognize_google(voice, language='es-ES')
-        rec = rec.lower()
-        print(rec)
-        if name in rec:
-            if "pregrado" in rec:
-                talk("¿de que facultad quieres averiguar las carreras de pregrado?")
+            with sr.Microphone() as source:
+                talk("Di mi nombre y uno de los siguientes numeros, 1 si deseas acceder a los pregrados, 2 si deseas acceder a los posgrados")
                 voice = listener.listen(source)
                 rec = listener.recognize_google(voice, language='es-ES')
                 rec = rec.lower()
                 print(rec)
                 if name in rec:
-                    if "derecho" in rec:
-                        talk("Derecho, investigación criminal")
-                        print("Derecho, investigación criminal")
-                    elif "comunicacion" in rec:
-                        talk("comunicación y relaciones cooperativas, comunicación grafica publicitaria, comunicación grafica y lenguajes audiovisaules, comunicación y entretenimiento digital")
-                        print("comunicación y relaciones cooperativas, comunicación grafica publicitaria, comunicación grafica y lenguajes audiovisaules, comunicación y entretenimiento digital")
-                    elif "ingenierías" in rec:
-                        talk("Ingeniería ambiental, Ingeniería de sistemas, Ingeniería financiera, Ingeniería civil, Ingeniería industrual, Ingeniería en energia, Ingeniería en telecomunicaciones, Ingeniería electrónica")
-                        print("Ingeniería ambiental, Ingeniería de sistemas, Ingeniería financiera, Ingeniería civil, Ingeniería industrual, Ingeniería en energia, Ingeniería en telecomunicaciones, Ingeniería electrónica")
-                    elif "ciencias economicas y administrativas" in rec:
-                        talk("administración de empresas, negocios internacionales, contaduria publica, economía, mercadeo")
-                        print("administración de empresas, negocios internacionales, contaduria publica, economía, mercadeo")
-                    elif "ciencias sociales y humanas" in rec:
-                        talk("psicología, ciencias politicas")
-                        print("psicología, ciencias politicas")
-                    elif "ciencias basicas" in rec:
-                        talk("computación cientifica")
-                        print("computación cientifica")
-                    elif "diseño" in rec:
-                        talk("diseño y gestión de espacios, diseño y gestion de la moda y el textíl, diseño y gestión de producto")
-                        print("diseño y gestión de espacios, diseño y gestion de la moda y el textíl, diseño y gestión de producto")
+
+                    if "1" in rec:
+                        talk("¿de que facultad quieres averiguar las carreras de pregrado?")
+                        print("derecho\ncomunicación\ningenierías\nciencias económicas y administrativas\nciencias socuales y humanas\n,ciencias basicas\n,diseño")
+                        voice = listener.listen(source)
+                        rec = listener.recognize_google(voice, language='es-ES')
+                        rec = rec.lower()
+                        print(rec)
+                        if name in rec:
+                            if "derecho" in rec:
+                                talk("Derecho, investigación criminal")
+                                print("Derecho, investigación criminal")
+                            elif "comunicación" in rec:
+                                talk("comunicación y relaciones cooperativas, comunicación grafica publicitaria, comunicación grafica y lenguajes audiovisaules, comunicación y entretenimiento digital")
+                                print("comunicación y relaciones cooperativas, comunicación grafica publicitaria, comunicación grafica y lenguajes audiovisaules, comunicación y entretenimiento digital")
+                            elif "ingenierías" in rec:
+                                talk("Ingeniería ambiental, Ingeniería de sistemas, Ingeniería financiera, Ingeniería civil, Ingeniería industrual, Ingeniería en energia, Ingeniería en telecomunicaciones, Ingeniería electrónica")
+                                print("Ingeniería ambiental, Ingeniería de sistemas, Ingeniería financiera, Ingeniería civil, Ingeniería industrual, Ingeniería en energia, Ingeniería en telecomunicaciones, Ingeniería electrónica")
+                            elif "ciencias economicas y administrativas" in rec:
+                                talk("administración de empresas, negocios internacionales, contaduria publica, economía, mercadeo")
+                                print("administración de empresas, negocios internacionales, contaduria publica, economía, mercadeo")
+                            elif "ciencias sociales y humanas" in rec:
+                                talk("psicología, ciencias politicas")
+                                print("psicología, ciencias politicas")
+                            elif "ciencias basicas" in rec:
+                                talk("computación cientifica")
+                                print("computación cientifica")
+
+                            elif "diseño" in rec:
+                                talk("diseño y gestión de espacios, diseño y gestion de la moda y el textíl, diseño y gestión de producto")
+                                print("diseño y gestión de espacios, diseño y gestion de la moda y el textíl, diseño y gestión de producto")
+
+                    elif "2" in rec:
+                        talk("La udem tiene demasiados programas de posgrado, en ellos tenemos maestrias, especializaciones, doctorados, al ser tantos, te rediccionaré a la pagina donde podras obvservar toda la información ")
+                        webbrowser.open("https://posgrados.udemedellin.edu.co/#gsc.tab=0")
 
     elif " facultades" in rec:
         print("Centro de idiomas, ciencias basicas, ingenierias, ciencias economicas y administrativas, ciencias sociales y humanas, comunicación, derecho")
